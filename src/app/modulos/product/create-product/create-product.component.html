@@ -1,8 +1,8 @@
 <div class="container">
-  <div>
-    <h1>Create Product</h1>
+  <div class="title">
+    <h1>{{isCreation?'Add ': (isDelete)?'Delete ':'Edit '}} Product</h1>
   </div>
-  <form class="form" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <form class="form" [formGroup]="productForm" (ngSubmit)="isCreation? onSubmit(): isDelete ? onDelete() : onChange() ">
 
     <label>
       Plaque:
@@ -24,7 +24,7 @@
 
     </label>
       <br>
-      <button  mat-raised-button type="submit"> Car</button>
-      <button   mat-stroked-button color="confirm" routerLink="/product">Cancel</button>
+      <button mat-raised-button [color]="isDelete ? 'warn' : 'accent'" type="submit">{{ isCreation?'Create ': (isDelete)?'Delete ':'Edit '}} Product</button>
+      <button mat-stroked-button color="confirm" routerLink="/product">Cancel</button>
   </form>
 </div>

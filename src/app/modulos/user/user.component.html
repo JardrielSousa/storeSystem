@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="title">
+    <h1>{{isCreation?'Add ': (isDelete)?'Delete ':'Edit '}} User</h1>
+  </div>
+  <form class="form" [formGroup]="userForm" (ngSubmit)="isCreation? onSubmit(): isDelete ? onDelete() : onChange() ">
+
+    <label>
+      name:
+      <input type="text" [value]="user?.name" name="name" formControlName="name" required >
+      <div>
+        <mat-error *ngIf="(userForm.touched || userForm.dirty) && f.name.errors && f.name.errors.required">Required field</mat-error>
+        <mat-error *ngIf="(userForm.touched || userForm.dirty) && f.name.errors && f.name.errors.minlength">Field must have at least 4 characters</mat-error>
+        <mat-error *ngIf="(userForm.touched || userForm.dirty) && f.name.errors && f.name.errors.maxlength">Field can have a maximum of 256 characters</mat-error>
+      </div>
+    </label>
+    <label>
+      Email:
+      <input type="email" [value]="user?.email" name="email" placeholder="email@gmail.com" formControlName="email" required >
+      <div>
+        <mat-error *ngIf="(userForm.touched || userForm.dirty) && f.email.errors && f.email.errors.required">Required field</mat-error>
+        <mat-error *ngIf="(userForm.touched || userForm.dirty) && f.email.errors && f.email.errors.minlength">Field must have at least 4 characters</mat-error>
+        <mat-error *ngIf="(userForm.touched || userForm.dirty) && f.email.errors && f.email.errors.maxlength">Field can have a maximum of 256 characters</mat-error>
+      </div>
+    </label>
+    <label>
+      Password:
+      <input type="password" [value]="user?.password" name="password" placeholder="password" formControlName="password" required >
+      <div>
+        <mat-error *ngIf="(userForm.touched || userForm.dirty) && f.password.errors && f.password.errors.required">Required field</mat-error>
+        <mat-error *ngIf="(userForm.touched || userForm.dirty) && f.password.errors && f.password.errors.minlength">Field must have at least 4 characters</mat-error>
+        <mat-error *ngIf="(userForm.touched || userForm.dirty) && f.password.errors && f.password.errors.maxlength">Field can have a maximum of 256 characters</mat-error>
+      </div>
+    </label>
+      <br>
+      <button mat-raised-button [color]="isDelete ? 'warn' : 'accent'" type="submit">{{ isCreation?'Create ': (isDelete)?'Delete ':'Edit '}} Product</button>
+      <button mat-stroked-button color="confirm" routerLink="/product">Cancel</button>
+  </form>
+</div>

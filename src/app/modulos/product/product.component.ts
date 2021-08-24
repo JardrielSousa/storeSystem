@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../service/product.service';
+import { ProductService } from './../../service/product.service';
 
 export interface PeriodicElement {
   name: string;
@@ -42,6 +42,6 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['name', 'price', 'quantity','action'];
 
 }

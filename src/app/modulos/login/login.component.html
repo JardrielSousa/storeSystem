@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="title">
+    <h1>Login</h1>
+  </div>
+  <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+    <label>
+      email:
+      <input type="email" [value]="login?.name" name="email" formControlName="email" required >
+      <div>
+        <mat-error *ngIf="(loginForm.touched || loginForm.dirty) && f.email.errors && f.email.errors.required">Required field</mat-error>
+        <mat-error *ngIf="(loginForm.touched || loginForm.dirty) && f.email.errors && f.email.errors.minlength">Field must have at least 4 characters</mat-error>
+        <mat-error *ngIf="(loginForm.touched || loginForm.dirty) && f.email.errors && f.email.errors.maxlength">Field can have a maximum of 256 characters</mat-error>
+      </div>
+    </label>
+    <label>
+      Password:
+      <input type="password" [value]="login?.password" name="password" placeholder="password" formControlName="password" required >
+      <div>
+        <mat-error *ngIf="(loginForm.touched || loginForm.dirty) && f.password.errors && f.password.errors.required">Required field</mat-error>
+        <mat-error *ngIf="(loginForm.touched || loginForm.dirty) && f.password.errors && f.password.errors.minlength">Field must have at least 4 characters</mat-error>
+        <mat-error *ngIf="(loginForm.touched || loginForm.dirty) && f.password.errors && f.password.errors.maxlength">Field can have a maximum of 256 characters</mat-error>
+      </div>
+    </label>
+      <br>
+      <button mat-raised-button color="accent" type="submit">Submit</button>
+      <!-- <button mat-stroked-button color="confirm" routerLink="/product">Cancel</button> -->
+  </form>
+</div>
